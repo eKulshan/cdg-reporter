@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :email, length: { in: 3..150 }
   validates :first_name, presence: true, length: { in: 3..100 }
   validates :last_name, presence: true, length: { in: 3..100 }
+
+  has_many :reports, dependent: :destroy
 end

@@ -1,0 +1,13 @@
+<h1><%= @report.title %></h1>
+
+<p><%= @report.description %></p>
+
+<p><%= @report.grade %></p>
+
+<ul>
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Edit", edit_report_path(@report) %></li>
+  <li><%= link_to "Destroy", report_path(@report),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+</ul>
