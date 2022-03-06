@@ -1,7 +1,5 @@
 <h1>Reports</h1>
 
-<%= link_to 'Profile', profile_path, method: :get %>
-<br>
 <%= button_to 'New Report', new_report_path, method: :get %>
 <br>
 <table>
@@ -17,10 +15,6 @@
       <td><%= report.grade %></td>
       <td><%= report.user.email %></td>
       <td><%= report.created_at.to_date %></td>
-      <td><%= link_to "Edit", edit_report_path(report) %></td>
-      <td><%= link_to "Destroy", report_path(report),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %></td>
   </tr>
   <% end %>
 </table>

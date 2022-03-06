@@ -5,7 +5,6 @@
       <div><%= message %></div>
     <% end %>
     <%= form.text_field :title %>
-
   </div>
 
   <div>
@@ -21,7 +20,7 @@
     <% report.errors.full_messages_for(:grade).each do |message| %>
       <div><%= message %></div>
     <% end %>
-    <%= form.text_area :grade %>
+    <%= form.select(:grade, [['A', 'A'], ['B', 'B'], ['C', 'C'], ['D', 'D'], ['FX', 'FX'], ['F', 'F']]) %>
   </div>
 
   <div>
