@@ -1,0 +1,8 @@
+<h3>Title: <%= @report.title %></h3>
+<p>Content: <%= @report.description %></p>
+<p>Grade: <%= @report.grade %></p>
+
+<%= button_to "Edit", edit_report_path(@report), method: :get %>
+<%= button_to "Destroy", report_path(@report),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>

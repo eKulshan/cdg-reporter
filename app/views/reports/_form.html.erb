@@ -1,0 +1,29 @@
+<%= form_with model: report do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <% report.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <% report.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :grade %><br>
+    <% report.errors.full_messages_for(:grade).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    <%= form.select(:grade, [['A', 'A'], ['B', 'B'], ['C', 'C'], ['D', 'D'], ['FX', 'FX'], ['F', 'F']]) %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
