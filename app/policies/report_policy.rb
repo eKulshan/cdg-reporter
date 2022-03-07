@@ -6,7 +6,9 @@ class ReportPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user
+      if user.admin? || user.reviewer?
+        scope.all
+      else
         scope.where(user_id: @user[:id])
       end
     end
@@ -17,14 +19,20 @@ class ReportPolicy < ApplicationPolicy
   end
 
   def edit?
-    @record[:user_id] == @user[:id]
+    return false if Report.where(user_id: @record[:user_id]).count >= 10
+
+    @user.admin? || @user.author?(@record)
   end
 
   def update?
-    @record[:user_id] == @user[:id]
+    return false if Report.where(user_id: @record[:user_id]).count >= 10
+
+    @user.admin? || @user.author?(@record)
   end
 
   def destroy?
-    @record[:user_id] == @user[:id]
+    return false if Report.where(user_id: @record[:user_id]).count >= 10
+
+    @user.admin? || @user.author?(@record)
   end
 end
