@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "reports#index"
+  root "reports#home"
 
   devise_for :users
 

@@ -1,12 +1,16 @@
 class ReportsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:home]
+
+  def home
+    render :home
+  end
 
   def index
-    @reports = Report.all
+    @reports = policy_scope(Report)
   end
 
   def show
-    @report = Report.find(params[:id])
+    @report = policy_scope(Report).find(params[:id])
   end
 
   def new
@@ -39,6 +43,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report = Report.find(params[:id])
+    authorize @report
     @report.destroy
 
     redirect_to root_path
